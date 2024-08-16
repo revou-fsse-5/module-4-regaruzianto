@@ -20,7 +20,7 @@ function App() {
           Learn React
         </a> */}
         <div className='w-full max-w-md p-8 bg-white rounded shadow-md text-gray-900 justify-start '>
-          <h1 className='text-base'>Multi State Form</h1>
+          <h1 className='text-base'>Register Form</h1>
           <LoginForm />
         </div>
         
