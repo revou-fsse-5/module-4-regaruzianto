@@ -5,8 +5,6 @@ import { error } from 'console';
 
 
 function LoginForm() {
- 
-   
     
     const [currentState, setcurrentState] = useState (1);
     const today = new Date();
@@ -192,19 +190,21 @@ function LoginForm() {
 
             )}
 
-            {currentState < 3 && (
-                <button type='button' onClick={handleNext}>next</button>
-            )}
+            <div className="flex flex-col gap-2 mt-4">
+                {currentState < 3 && (
+                    <button type='button' onClick={handleNext} className="bg-blue-500 text-white py-2 px-4 rounded">next</button>
+                )}
 
-            {currentState > 1 && (
-                <button type='button' onClick={handlePrev}>prev</button>
-            )}
+                {currentState > 1 && (
+                    <button type='button' onClick={handlePrev} className="bg-gray-500 text-white py-2 px-4 rounded">prev</button>
+                )}
 
-            {currentState === 3 && (
-                <button>submit</button>
-            )}
-            
-           
+                {currentState === 3 && (
+                    <button type="submit" className="bg-green-500 text-white py-2 px-4 rounded">submit</button>
+                )}       
+
+            </div>
+                  
             
         </form>
     </div>
