@@ -47,3 +47,23 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+Create 3 Pages
+Register able to register via api
+Login
+Category
+User able to see list of category
+User able to post category
+User able to update category
+User able to delete category
+Make sure all form category have validation
+Please use ui library, any form library and yup
+
+
+Advance
+Task Description:
+Implement Context API for state management across the application.
+Add basic error handling for API calls in the category management page.
+Implement a "Remember Me" option on the login page.
+Display a confirmation dialog before deleting a category.
