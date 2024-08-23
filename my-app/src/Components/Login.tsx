@@ -2,12 +2,17 @@ import { useFormik } from 'formik'
 import React from 'react'
 import * as Yup from "yup";
 import { loginUser } from '../Api/FetchApi';
-import { LoginDataInterface } from '../Interface/Interface';
+import { LoginDataInterface } from '../Interface/Interface'
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../Context/AuthContext'
 
 
 
 function Login() {
     
+    const navigate = useNavigate();
+    const { isAuthenticated, login} = useAuth()
+
     const validateSchema = Yup.object().shape({
         email : Yup.string().email('invalid email').required('email required'),
         password : Yup.string().required('password required'),
@@ -23,8 +28,15 @@ function Login() {
         onSubmit : async (values: LoginDataInterface) => {
             try {
                 const data = await loginUser(values);
-                console.log(values);
+                const token = data.accessToken;
+                if (token) {
+                    localStorage.setItem('token',token);
+                }
                 console.log(data);
+                console.log(token);
+                login();
+                navigate('/category');
+                
             }
             catch (error){
                 console.error('Login Failed : error')
@@ -38,7 +50,7 @@ function Login() {
   
   
     return (
-    <div className='flex items-center justify-center min-h-screen bg-gray-100'>
+    <div className='flex items-center justify-center'>
         <div className='w-full max-w-md p-8 space-y-8 bg-white rounded shadow-md'>Login
             <form action="" onSubmit={formik.handleSubmit} className='flex flex-col justify-normal text-left gap-2'>
                 <label htmlFor="email" className='text-sm font-medium text-gray-700'>email</label>

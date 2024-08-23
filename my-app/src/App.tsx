@@ -6,22 +6,27 @@ import Home from './Components/Home';
 import Navbar from './Components/Navbar';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Category from './Components/Category';
+import Footer from './Components/Footer';
+import { AuthProvider } from './Context/AuthContext';
 
 
 function App() {
   return (
-    <div className="App">
-      <Router>
-        <Navbar/>
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<RegisterForm />} />
-          <Route path='/category' element={<Category />} />
-        </Routes>
-      </Router>
-      
-    </div>
+    <AuthProvider>
+      <div className="App">
+        <Router>
+          <Navbar/>
+          <Routes>
+            <Route path='/' element={<Home />} />
+            {/* <Route path='/login' element={<Login />} /> */}
+            <Route path='/register' element={<RegisterForm />} />
+            <Route path='/category' element={<Category />} />
+          </Routes>
+          <Footer />
+        </Router>
+        
+      </div>
+    </AuthProvider>
   );
 }
 
